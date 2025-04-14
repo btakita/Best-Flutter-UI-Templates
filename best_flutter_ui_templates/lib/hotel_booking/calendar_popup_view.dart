@@ -24,6 +24,7 @@ class CalendarPopupView extends StatefulWidget {
   final Function(DateTime, DateTime)? onApplyClick;
 
   final Function()? onCancelClick;
+
   @override
   _CalendarPopupViewState createState() => _CalendarPopupViewState();
 }
@@ -80,12 +81,13 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                     padding: const EdgeInsets.all(24.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: HotelAppTheme.buildLightTheme().backgroundColor,
+                        color:
+                            HotelAppTheme.buildLightTheme().colorScheme.surface,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(24.0)),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
+                              color: Colors.grey.withAlpha((0.2 * 255).round()),
                               offset: const Offset(4, 4),
                               blurRadius: 8.0),
                         ],
@@ -113,8 +115,8 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 16,
-                                            color:
-                                                Colors.grey.withOpacity(0.8)),
+                                            color: Colors.grey.withAlpha(
+                                                (0.8 * 255).round())),
                                       ),
                                       const SizedBox(
                                         height: 4,
@@ -214,7 +216,8 @@ class _CalendarPopupViewState extends State<CalendarPopupView>
                                         // animationController.reverse().then((f) {
 
                                         // });
-                                        widget.onApplyClick!(startDate!, endDate!);
+                                        widget.onApplyClick!(
+                                            startDate!, endDate!);
                                         Navigator.pop(context);
                                       } catch (_) {}
                                     },
